@@ -1,0 +1,78 @@
+﻿<Window x:Class="ClownOnThisSIde.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClownOnThisSIde"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="820">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="350"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox Margin="7"
+                         VerticalContentAlignment="Center"
+                         Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}"/>
+                <ComboBox Grid.Column="1"
+                          Margin="7"
+                          VerticalContentAlignment="Center"
+                          Name="SortComboBox"
+                          SelectedItem="{Binding SortText, UpdateSourceTrigger=PropertyChanged}"/>
+                <ComboBox Grid.Column="2"
+                          Margin="7"
+                          VerticalContentAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <ListBox ItemsSource="{Binding collectionView}"
+                         Width="800">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid VerticalAlignment="Center"
+                                  Width="700">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition Width="100"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding Image}"
+                                       Margin="5"/>
+                                <Grid Grid.Column="1">
+                                    <StackPanel VerticalAlignment="Center">
+                                        <TextBlock Margin="5"
+                                       FontSize="18"
+                                       Text="{Binding Title}"/>
+                                        <TextBlock Margin="5"
+                                       FontSize="16"
+                                       Text="{Binding Article}"/>
+                                        <TextBlock Margin="5"
+                                       FontSize="16"
+                                       Text="Marerials"/>
+                                    </StackPanel>
+                                </Grid>
+                                <TextBlock Grid.Column="2"
+                               Text="{Binding Price}"
+                                           VerticalAlignment="Top"
+                                           Margin="0 10 0 0"
+                                           FontSize="16"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                
+            </Grid>
+        </Grid>
+        
+    </Grid>
+</Window>
